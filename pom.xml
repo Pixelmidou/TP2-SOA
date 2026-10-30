@@ -19,17 +19,19 @@
             <artifactId>jakarta.xml.ws-api</artifactId>
             <version>3.0.0</version>
         </dependency>
+
         <!-- Implémentation (Runtime) -->
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-rt</artifactId>
             <version>3.0.2</version>
         </dependency>
-        <!-- API Jakarta JWS (Annotations) -->
+
+        <!-- API Jakarta JWS (Annotations) - CORRIGÉ EN 3.0.0 -->
         <dependency>
             <groupId>jakarta.jws</groupId>
             <artifactId>jakarta.jws-api</artifactId>
-            <version>2.1.0</version>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 
