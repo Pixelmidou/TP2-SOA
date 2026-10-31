@@ -1,16 +1,16 @@
 # TP2 SOA — CalculatriceWS (Jakarta XML Web Services)
 
-## Project Overview
-This project implements a SOAP Web Service using Jakarta XML Web Services (JAX-WS) and Maven. The service, named `CalculatriceWS`, exposes basic mathematical operations: addition, subtraction, multiplication, and division.
+## Aperçu du projet
+Ce projet met en œuvre un service web SOAP en utilisant Jakarta XML Web Services (JAX-WS) et Maven. Le service, nommé `CalculatriceWS`, expose des opérations mathématiques de base : addition, soustraction, multiplication et division.
 
-## Prerequisites
-Before running the project, ensure you have the following installed:
-- **Java JDK** (version 11 or higher)
+## Prérequis
+Avant de lancer le projet, assurez-vous d'avoir installé les éléments suivants :
+- **Java JDK** (version 11 ou supérieure)
 - **IntelliJ IDEA**
-- **Maven** (usually bundled with IntelliJ)
-- **SoapUI** (Open Source version) - Required for testing the service. Download it from [https://www.soapui.org/downloads/soapui/](https://www.soapui.org/downloads/soapui/).
+- **Maven** (généralement inclus avec IntelliJ)
+- **SoapUI** (version Open Source) - Nécessaire pour tester le service. Téléchargez-le depuis [https://www.soapui.org/downloads/soapui/](https://www.soapui.org/downloads/soapui/).
 
-## Project Structure
+## Structure du projet
 
 ```text
 CalculatriceWS/
@@ -28,41 +28,41 @@ CalculatriceWS/
 └── README.md
 ```
 
-## File Descriptions
+## Description des fichiers
 
-| File | Role |
+| Fichier | Rôle |
 |---|---|
-| `pom.xml` | Maven configuration containing Jakarta XML WS dependencies and the `exec-maven-plugin` to run the server easily. |
-| `service/ICalculatrice.java` | The service interface defining the operations, annotated with `@WebService`, `@WebMethod`, and `@WebParam`. |
-| `service/Calculatrice.java` | The implementation of the interface, annotated with `@WebService(endpointInterface = ...)`. |
-| `serveur/ServeurJWS.java` | The main class that publishes the web service using `Endpoint.publish()`. |
+| `pom.xml` | Configuration Maven contenant les dépendances Jakarta XML WS et le plugin `exec-maven-plugin` pour faciliter le lancement du serveur. |
+| `service/ICalculatrice.java` | L'interface du service définissant les opérations, annotée avec `@WebService`, `@WebMethod` et `@WebParam`. |
+| `service/Calculatrice.java` | L'implémentation de l'interface, annotée avec `@WebService(endpointInterface = ...)`. |
+| `serveur/ServeurJWS.java` | La classe principale qui publie le service web en utilisant `Endpoint.publish()`. |
 
-## How to Run the Service
+## Comment exécuter le service
 
-1. Open the project in IntelliJ IDEA.
-2. Ensure Maven dependencies are downloaded. Open the **Maven** tool window on the right side and click the **Reload All Maven Projects** button (circular arrows).
-3. Open `src/main/java/serveur/ServeurJWS.java`.
-4. Click the green **Run** button (or right-click and select **Run 'ServeurJWS.main()'**).
-5. Check the IntelliJ console. You should see the following message:
+1. Ouvrez le projet dans IntelliJ IDEA.
+2. Assurez-vous que les dépendances Maven sont téléchargées. Ouvrez la fenêtre d'outils **Maven** sur le côté droit et cliquez sur le bouton **Reload All Maven Projects** (flèches circulaires).
+3. Ouvrez le fichier `src/main/java/serveur/ServeurJWS.java`.
+4. Cliquez sur le bouton vert **Run** (ou faites un clic droit et sélectionnez **Run 'ServeurJWS.main()'**).
+5. Vérifiez la console IntelliJ. Vous devriez voir le message suivant :
    ```text
    Service Web publié à l'adresse : http://localhost:8080/CalculatriceWS?wsdl
    ```
-6. **Important:** Leave the server running. Do not click the red Stop button.
+6. **Important :** Laissez le serveur en cours d'exécution. Ne cliquez pas sur le bouton rouge Stop.
 
-## Testing with SoapUI
+## Test avec SoapUI
 
-To verify that the service works, follow these steps using SoapUI:
+Pour vérifier que le service fonctionne, suivez ces étapes en utilisant SoapUI :
 
-1. Open the **SoapUI** application.
-2. Click on the **SOAP** button in the top-left corner to create a new SOAP project.
-3. In the **Initial WSDL** field, paste the following URL:
+1. Ouvrez l'application **SoapUI**.
+2. Cliquez sur le bouton **SOAP** dans le coin supérieur gauche pour créer un nouveau projet SOAP.
+3. Dans le champ **Initial WSDL**, collez l'URL suivante :
    ```text
    http://localhost:8080/CalculatriceWS?wsdl
    ```
-4. Click **OK**. SoapUI will analyze the WSDL and generate the interface on the left panel.
-5. Expand the project tree: `CalculatriceServiceSoapBinding` -> `somme`.
-6. Double-click on **Request 1**. A request template will open in the editor.
-7. Replace the question marks with numbers, for example:
+4. Cliquez sur **OK**. SoapUI va analyser le WSDL et générer l'interface dans le panneau de gauche.
+5. Développez l'arborescence du projet : `CalculatriceServiceSoapBinding` -> `somme`.
+6. Double-cliquez sur **Request 1**. Un modèle de requête va s'ouvrir dans l'éditeur.
+7. Remplacez les points d'interrogation par des nombres, par exemple :
    ```xml
    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service/">
       <soapenv:Header/>
@@ -74,8 +74,8 @@ To verify that the service works, follow these steps using SoapUI:
       </soapenv:Body>
    </soapenv:Envelope>
    ```
-8. Click the green **Play** button (Submit request to specified URL) at the top left of the request window.
-9. On the right side, in the **XML** response window, verify the result:
+8. Cliquez sur le bouton vert **Play** (Submit request to specified URL) en haut à gauche de la fenêtre de requête.
+9. Sur le côté droit, dans la fenêtre de réponse **XML**, vérifiez le résultat :
    ```xml
    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
       <soap:Body>
@@ -85,7 +85,7 @@ To verify that the service works, follow these steps using SoapUI:
       </soap:Body>
    </soap:Envelope>
    ```
-10. You can repeat this process for `soustraction`, `multiplication`, and `division` to test all operations.
+10. Vous pouvez répéter ce processus pour `soustraction`, `multiplication` et `division` afin de tester toutes les opérations.
 
-## Exiting the Service
-To stop the server, click the red **Stop** button in the IntelliJ console window.
+## Arrêter le service
+Pour arrêter le serveur, cliquez sur le bouton rouge **Stop** dans la fenêtre de console d'IntelliJ.
